@@ -2,17 +2,9 @@ FROM debian:stable-slim
 
 # ENV variables
 ENV DEBIAN_FRONTEND noninteractive
-ENV TZ "America/New_York"
+ENV TZ "Europe/Brussels"
 ENV CUPSADMIN admin
 ENV CUPSPASSWORD password
-
-
-LABEL org.opencontainers.image.source="https://github.com/anujdatar/cups-docker"
-LABEL org.opencontainers.image.description="CUPS Printer Server"
-LABEL org.opencontainers.image.author="Anuj Datar <anuj.datar@gmail.com>"
-LABEL org.opencontainers.image.url="https://github.com/anujdatar/cups-docker/blob/main/README.md"
-LABEL org.opencontainers.image.licenses=MIT
-
 
 # Install dependencies
 RUN apt-get update -qq  && apt-get upgrade -qqy \
@@ -22,13 +14,11 @@ RUN apt-get update -qq  && apt-get upgrade -qqy \
     cups \
     cups-filters \
     printer-driver-all \
+    printer-driver-brlaser \
     printer-driver-cups-pdf \
     printer-driver-foo2zjs \
     foomatic-db-compressed-ppds \
     openprinting-ppds \
-    hpijs-ppds \
-    hp-ppd \
-    hplip \
     avahi-daemon \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
