@@ -9,6 +9,6 @@ services:
 #    volumes:
 #      - ./config:/etc/cups
     environment:
-        - CUPSADMIN=
-        - CUPSPASSWORD=
-        - TZ="Europe/Amsterdam"
+        - CUPSADMIN="${CUPS_ADMIN}"
+        - CUPSPASSWORD="${CUPS_PASSWORD}"
+        - TZ="${TZ}"
