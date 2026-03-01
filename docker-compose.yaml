@@ -1,0 +1,14 @@
+services:
+  cups:
+    build: .
+    container_name: cups
+    restart: unless-stopped
+    network_mode: host # use host network to keep things simple
+    devices:
+      - /dev/bus/usb/009/003:/dev/bus/usb/009/003:rwm # hardcoded usb port
+#    volumes:
+#      - ./config:/etc/cups
+    environment:
+        - CUPSADMIN=
+        - CUPSPASSWORD=
+        - TZ="Europe/Amsterdam"
